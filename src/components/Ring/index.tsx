@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {rgba} from "polished";
 
 interface Props {
     ring: {
@@ -27,10 +28,22 @@ const RingContainer = styled.div<Props>`
   top: ${({ring}) => ring.position.y};
   width: ${({ring}) => ring.size}px;
   height: ${({ring}) => ring.size}px;
-  border: ${({ring}) => `${ring.thickness}px solid ${ring.color}`};
+  background: ${({ring}) => `linear-gradient(0deg, ${rgba(ring.color,0)} 0%, ${rgba(ring.color,1)} 100%)`};
   border-radius: 50%;
   filter: ${({ring}) => `blur(${(ring.depth - 1) * 20}px)`};
   opacity: ${({ring}) => `calc(1 / ${ring.depth})`};
+  &:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: ${({ring}) => `${-(ring.size / 2) + (ring.thickness)}px`};
+    margin-top: ${({ring}) => `${-(ring.size / 2) + (ring.thickness)}px`};
+    background-color: ${({theme}) => theme.colors.primary};
+    border-radius: 50%;
+    width: ${({ring}) => `${ring.size - (ring.thickness * 2)}px`};
+    height: ${({ring}) => `${ring.size - (ring.thickness * 2)}px`};
+  }
 `
 
 export default Ring;
