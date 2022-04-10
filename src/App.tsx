@@ -1,7 +1,7 @@
 import React from 'react';
 import Background from './components/Background';
 import Calculator from './components/Calculator';
-import {createGlobalStyle, ThemeProvider} from "styled-components";
+import styled, {createGlobalStyle, ThemeProvider} from "styled-components";
 import { theme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
@@ -30,10 +30,22 @@ function App() {
       <ThemeProvider theme={theme}>
       <GlobalStyle />
         <Background>
-          <Calculator />
+            <CalculatorWrapper>
+              <Calculator />
+            </CalculatorWrapper>
         </Background>
       </ThemeProvider>
   );
 }
+
+const CalculatorWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+`
 
 export default App;

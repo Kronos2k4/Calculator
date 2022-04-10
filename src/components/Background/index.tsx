@@ -6,8 +6,8 @@ import { ringsConfig } from "./ringConfig";
 const Background: FC = ({children}) => {
     return (
         <Wrapper>
-            {ringsConfig.map(ring => <Ring key={`ring-${ring.id}`} ring={ring} />)}
             {children}
+            {ringsConfig.map(ring => <Ring key={`ring-${ring.id}`} ring={ring} />)}
         </Wrapper>
     )
 }
