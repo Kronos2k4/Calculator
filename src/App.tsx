@@ -1,29 +1,9 @@
 import React from 'react';
 import Background from './components/Background';
 import Calculator from './components/Calculator';
-import styled, {createGlobalStyle, ThemeProvider} from "styled-components";
+import styled, {ThemeProvider} from "styled-components";
 import { theme } from './theme';
-
-const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  html {
-    height: 100%;
-  }
-  
-  #root {
-    height: 100%;
-  }
-`
+import { GlobalStyle } from './GlobalStyle';
 
 function App() {
   return (
