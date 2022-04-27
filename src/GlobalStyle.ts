@@ -1,4 +1,5 @@
 import {createGlobalStyle} from "styled-components";
+import {theme} from "./theme";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -10,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     height: 100%;
     overflow: hidden;
+    font-family: ${theme.fonts.archivo};
   }
   
   html {

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import {FC, ReactElement} from "react";
 import styled from "styled-components";
 import CalculatorButton from "../CalculatorButton";
 
@@ -7,11 +7,12 @@ interface Props {
     operation: string;
     onClick: (operation: string) => void;
     color?: string;
+    icon?: ReactElement;
 }
 
-const CalculatorOperand: FC<Props> = ({value, operation, onClick, color}) => {
+const CalculatorOperand: FC<Props> = ({value, operation, onClick, color, icon}) => {
     return (
-        <CalculatorButton color={color} value={value} onClick={() => onClick(operation)} />
+        <CalculatorButton icon={icon} color={color} value={value} onClick={() => onClick(operation)} />
     )
 }
 

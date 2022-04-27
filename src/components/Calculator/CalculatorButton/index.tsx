@@ -1,6 +1,6 @@
 import { rgba } from "polished";
-import { FC } from "react";
-import styled, { keyframes } from "styled-components";
+import {FC, ReactElement} from "react";
+import styled from "styled-components";
 import { theme } from "../../../theme";
 
 interface Props {
@@ -8,21 +8,24 @@ interface Props {
     onClick: (value: number | string) => void;
     size?: number;
     color?: string;
+    icon?: ReactElement;
 }
 
-const CalculatorButton: FC<Props> = ({value, onClick, size = 1, color = theme.calculator.light.colors.primary }) => {
+const CalculatorButton: FC<Props> = ({value, onClick, size = 1, color = theme.calculator.light.colors.primary, icon}) => {
     return (
         <Wrapper onClick={() => onClick(value)} size={size} color={color}>
-            {value}
+            {icon ? icon : value}
         </Wrapper>
     )
 }
 
 const Wrapper = styled.div<{size: number; color: string;}>`
   position: relative;
+  font-variation-settings: "wght" 600;
+  -webkit-font-smoothing: none;
   border-radius: 20px;
   color: ${({theme}) => theme.calculator.light.colors.primary};
-  background-color: ${({theme}) => rgba(theme.calculator.light.colors.primary, .2)};
+  background-color: ${({color}) => rgba(color, .2)};
   cursor: pointer;
   display: flex;
   align-items: center;

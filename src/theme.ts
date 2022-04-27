@@ -1,4 +1,7 @@
 export const theme = {
+    fonts: {
+        archivo: "Archivo, Arial, sans-serif",
+    },
     colors: {
         primary: '#0E1E31',
         secondary: '#57C5DD',

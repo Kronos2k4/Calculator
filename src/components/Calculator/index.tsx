@@ -3,12 +3,21 @@ import {rgba} from "polished";
 import CalculatorButton from "./CalculatorButton";
 import CalculatorOperand from "./CalculatorOperand";
 import {useEffect, useState} from "react";
+import { PlusIcon } from "../Icons";
 
 const Calculator = () => {
 
     const [values, setValues] = useState<string[]>([]);
     const [currentValue, setCurrentValue] = useState<string>('');
     const [result, setResult] = useState<number | string>();
+
+    const operandsList = [
+        {
+            value: '+',
+            operation: '+',
+            icon: <PlusIcon />,
+        },
+    ]
 
     const handleOperand = (value: number | string) => {
         setCurrentValue(state => state + value.toString())
@@ -48,12 +57,14 @@ const Calculator = () => {
         for(let i = 9; i >= 0; i--) {
             arr.push(<CalculatorButton size={(i === 0) ? 2 : 1} key={`button-${i}`} value={i} onClick={handleOperand}/>)
         }
-        arr.push(<CalculatorOperand color={''} value={'.'} operation={'.'} onClick={() => {}} />)
+        arr.push(<CalculatorOperand value={'.'} operation={'.'} onClick={() => {}} />)
         return arr
     }
 
     const _renderOperands = () => {
-        return [<CalculatorOperand value={'+'} operation={'+'} onClick={handleOperation} />, <CalculatorOperand value={'='} operation={'='} onClick={handleOperation} />]
+        return operandsList.map(({value, operation, icon}) => (
+            <CalculatorOperand value={value} icon={icon} operation={operation} onClick={handleOperation} />
+        ))
     }
 
     return (
