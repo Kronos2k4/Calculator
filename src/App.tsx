@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Background from './components/Background';
 import Calculator from './components/Calculator';
-import styled, {ThemeProvider} from "styled-components";
+import styled, { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import { GlobalStyle } from './GlobalStyle';
 import { FontStyles } from './FontStyles';
 
-function App() {
+const App: FC = () => {
   return (
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <FontStyles />
-        <Background>
-            <CalculatorWrapper>
-              <Calculator />
-            </CalculatorWrapper>
-        </Background>
-      </ThemeProvider>
+      <Background>
+        <CalculatorWrapper>
+          <Calculator />
+        </CalculatorWrapper>
+      </Background>
+    </ThemeProvider>
   );
-}
+};
 
 const CalculatorWrapper = styled.div`
   display: flex;
@@ -28,6 +28,6 @@ const CalculatorWrapper = styled.div`
   height: 100%;
   position: relative;
   z-index: 1;
-`
+`;
 
 export default App;

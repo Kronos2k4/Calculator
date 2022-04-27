@@ -1,9 +1,9 @@
-import {createGlobalStyle} from "styled-components";
-import {theme} from "./theme";
+import { createGlobalStyle } from 'styled-components';
+import { theme } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
   * {
-    box-sizing: border-box;
+    box-sizing: border-box; 
   }
   
   body {
@@ -21,4 +21,4 @@ export const GlobalStyle = createGlobalStyle`
   #root {
     height: 100%;
   }
-`
+`;
