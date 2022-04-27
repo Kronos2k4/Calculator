@@ -1,5 +1,4 @@
 import {FC, ReactElement} from "react";
-import styled from "styled-components";
 import CalculatorButton from "../CalculatorButton";
 
 interface Props {

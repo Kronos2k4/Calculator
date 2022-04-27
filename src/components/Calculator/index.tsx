@@ -4,6 +4,7 @@ import CalculatorButton from "./CalculatorButton";
 import CalculatorOperand from "./CalculatorOperand";
 import {useEffect, useState} from "react";
 import { PlusIcon } from "../Icons";
+import { operandsList } from "./operandsList";
 
 const Calculator = () => {
 
@@ -11,13 +12,7 @@ const Calculator = () => {
     const [currentValue, setCurrentValue] = useState<string>('');
     const [result, setResult] = useState<number | string>();
 
-    const operandsList = [
-        {
-            value: '+',
-            operation: '+',
-            icon: <PlusIcon />,
-        },
-    ]
+
 
     const handleOperand = (value: number | string) => {
         setCurrentValue(state => state + value.toString())
