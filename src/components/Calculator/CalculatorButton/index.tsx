@@ -50,8 +50,7 @@ const Wrapper = styled.div<{ width: number; height: number; color: string }>`
     theme.calculator.sizes.button * height + 10 * (height - 1)}px;
   transition: background-color, 0.3s ease-in-out;
   &:hover {
-    background-color: ${({ theme }) =>
-      rgba(theme.calculator.light.colors.primary, 0.4)};
+    background-color: ${({ color }) => rgba(color, 0.4)};
   }
   &:after {
     content: '';

@@ -4,6 +4,7 @@ import CalculatorButton from './CalculatorButton';
 import CalculatorOperand from './CalculatorOperand';
 import { useState } from 'react';
 import { operandsList } from './operandsList';
+import { theme } from '../../theme';
 
 const Calculator = () => {
   const [values, setValues] = useState<string[]>([]);
@@ -67,13 +68,16 @@ const Calculator = () => {
         icon={icon}
         operation={operation}
         onClick={handleOperation}
+        color={theme.calculator.light.colors.secondary}
       />
     ));
   };
 
   return (
     <Wrapper>
-      <Header>header</Header>
+      <Header>
+        <DraggablePoint />
+      </Header>
       <CalculationZone>
         {_renderOperations()}
         {result}
@@ -127,6 +131,14 @@ const Column = styled.div``;
 const Actions = styled.div`
   display: flex;
   gap: 10px;
+`;
+
+const DraggablePoint = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid ${({ theme }) => theme.calculator.light.colors.secondary};
+  cursor: move;
 `;
 
 export default Calculator;
