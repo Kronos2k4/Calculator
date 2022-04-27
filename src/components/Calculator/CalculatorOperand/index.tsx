@@ -1,22 +1,18 @@
 import { FC } from "react";
 import styled from "styled-components";
+import CalculatorButton from "../CalculatorButton";
 
 interface Props {
     value: string;
     operation: string;
     onClick: (operation: string) => void;
+    color?: string;
 }
 
-const CalculatorOperand: FC<Props> = ({value, operation, onClick}) => {
+const CalculatorOperand: FC<Props> = ({value, operation, onClick, color}) => {
     return (
-        <Wrapper onClick={() => onClick(operation)}>
-            {value}
-        </Wrapper>
+        <CalculatorButton color={color} value={value} onClick={() => onClick(operation)} />
     )
 }
-
-const Wrapper = styled.div`
-
-`
 
 export default CalculatorOperand;

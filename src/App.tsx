@@ -4,11 +4,13 @@ import Calculator from './components/Calculator';
 import styled, {ThemeProvider} from "styled-components";
 import { theme } from './theme';
 import { GlobalStyle } from './GlobalStyle';
+import { FontStyles } from './FontStyles';
 
 function App() {
   return (
       <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <FontStyles />
         <Background>
             <CalculatorWrapper>
               <Calculator />

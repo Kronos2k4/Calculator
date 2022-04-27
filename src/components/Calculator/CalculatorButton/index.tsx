@@ -1,23 +1,26 @@
 import { rgba } from "polished";
 import { FC } from "react";
 import styled, { keyframes } from "styled-components";
+import { theme } from "../../../theme";
 
 interface Props {
-    value: number;
-    onClick: (value: number) => void;
+    value: number | string;
+    onClick: (value: number | string) => void;
+    size?: number;
+    color?: string;
 }
 
-const CalculatorButton: FC<Props> = ({value, onClick}) => {
+const CalculatorButton: FC<Props> = ({value, onClick, size = 1, color = theme.calculator.light.colors.primary }) => {
     return (
-        <Wrapper onClick={() => onClick(value)}>
+        <Wrapper onClick={() => onClick(value)} size={size} color={color}>
             {value}
         </Wrapper>
     )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{size: number; color: string;}>`
   position: relative;
-  border-radius: 50%;
+  border-radius: 20px;
   color: ${({theme}) => theme.calculator.light.colors.primary};
   background-color: ${({theme}) => rgba(theme.calculator.light.colors.primary, .2)};
   cursor: pointer;
@@ -25,7 +28,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  width: ${({theme}) => theme.calculator.sizes.button}px;
+  width: ${({theme, size}) => theme.calculator.sizes.button * size + (10 * (size - 1))}px;
   height: ${({theme}) => theme.calculator.sizes.button}px;
   transition: background-color, .3s ease-in-out;
   &:hover {
@@ -35,7 +38,7 @@ const Wrapper = styled.div`
     content: "";
     display: block;
     position: absolute;
-    border-radius: 50%;
+    border-radius: 20px;
     left: 0;
     top:0;
     width: 100%;
@@ -49,7 +52,7 @@ const Wrapper = styled.div`
     &:after {
       box-shadow: 0 0 0 0 white;
       position: absolute;
-      border-radius: 50%;
+      border-radius: 20px;
       left: 0;
       top: 0;
       opacity: .3;

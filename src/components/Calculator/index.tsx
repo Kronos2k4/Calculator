@@ -10,7 +10,7 @@ const Calculator = () => {
     const [currentValue, setCurrentValue] = useState<string>('');
     const [result, setResult] = useState<number | string>();
 
-    const handleOperand = (value: number) => {
+    const handleOperand = (value: number | string) => {
         setCurrentValue(state => state + value.toString())
     }
 
@@ -45,9 +45,10 @@ const Calculator = () => {
 
     const _renderButtons = () => {
         const arr = []
-        for(let i = 0; i <= 9; i++) {
-            arr.push(<CalculatorButton key={`button-${i}`} value={i} onClick={handleOperand}/>)
+        for(let i = 9; i >= 0; i--) {
+            arr.push(<CalculatorButton size={(i === 0) ? 2 : 1} key={`button-${i}`} value={i} onClick={handleOperand}/>)
         }
+        arr.push(<CalculatorOperand color={''} value={'.'} operation={'.'} onClick={() => {}} />)
         return arr
     }
 
@@ -65,8 +66,12 @@ const Calculator = () => {
                 {result}
             </CalculationZone>
             <Actions>
-                {_renderButtons()}
-                {_renderOperands()}
+                <NumbersContainer>
+                    {_renderButtons()}
+                </NumbersContainer>
+                <OperandsContainer>
+                    {_renderOperands()}
+                </OperandsContainer>
             </Actions>
         </Wrapper>
     )
@@ -85,6 +90,20 @@ const Header = styled.div`
 
 const CalculationZone = styled.div`
 
+`
+
+const NumbersContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 140px;
+  gap: 10px;
+`
+
+const OperandsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 40px;
+  gap: 10px;
 `
 
 const Actions = styled.div`
